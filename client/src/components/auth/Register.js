@@ -34,8 +34,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
       } catch (err) {
         setSuccess(err.response.data)
-
-
       }
     }
   };
