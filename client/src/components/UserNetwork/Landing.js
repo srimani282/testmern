@@ -5,18 +5,18 @@ export const Landing = (props) => {
 
     useEffect(() => {
 
-        try {
-            const res = await api.get('/', {
-                name: formData.name,
-                email: formData.email, password: formData.password
-            });
-            setSuccess("success")
+        // try {
+        //     const res = await api.get('/', {
+        //         name: formData.name,
+        //         email: formData.email, password: formData.password
+        //     });
+        //     setSuccess("success")
 
-        } catch (err) {
-            setSuccess(err.response.data)
-        }
+        // } catch (err) {
+        //     setSuccess(err.response.data)
+        // }
 
-    }, [input])
+    }, [])
     return (
         <div className="container" >
             <p>Home</p>
@@ -24,13 +24,5 @@ export const Landing = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({
 
-})
-
-const mapDispatchToProps = {
-
-    isAuthenticated: state.auth.isAuthenticated
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Landing)
+export default Landing;

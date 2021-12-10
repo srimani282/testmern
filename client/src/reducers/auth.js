@@ -4,13 +4,14 @@ import {
   USER_LOADED,
   AUTH_ERROR,
   LOGIN_SUCCESS,
-  //LOGIN_FAIL,
+  LOGIN_FAIL,
   LOGOUT,
 } from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
+  failedError: '',
   userType: null,
   loading: true,
   user: null
@@ -35,6 +36,13 @@ function authReducer(state = initialState, action) {
         isAuthenticated: true,
         loading: false,
         token: payload.token
+      };
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: false,
+        failedError: payload,
       };
     case AUTH_ERROR:
     case LOGOUT:

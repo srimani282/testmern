@@ -14,7 +14,7 @@ import { Redirect } from 'react-router-dom';
 // Load User
 export const loadUser = () => async dispatch => {
   try {
-    if(localStorage.token){
+    if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
     const res = await api.get('/users/me');
@@ -59,14 +59,10 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(loadUser());
   } catch (err) {
-    const errors = err.response.data.errors;
-
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
-    }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_FAIL,
+      payload: err.response.data
     });
   }
 };
